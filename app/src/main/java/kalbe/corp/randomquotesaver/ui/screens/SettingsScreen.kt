@@ -10,15 +10,15 @@ import kalbe.corp.randomquotesaver.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun RandomQuoteScreen(
+fun SettingsScreen(
     navController: NavController
 ){
     Scaffold(
         topBar = { TopBar(
-            title = "Random Quotes",
+            title = "Settings"
         ) },
         bottomBar = { BottomBar(navController) }
     ) { innerPadding ->
-        Text("Random Quote Screen")
+        Text("Home Screen")
     }
 }
