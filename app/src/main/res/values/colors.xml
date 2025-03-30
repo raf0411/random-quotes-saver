@@ -8,9 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent_white">#80FFFFFF</color>
-    <color name="blue_500">#111144</color>
-    <color name="blue_300">#2620CB</color>
     <color name="blue_100">#7A9DFF</color>
+    <color name="blue_300">#2620CB</color>
+    <color name="blue_400">#802620CB</color>
+    <color name="blue_500">#111144</color>
     <color name="nav_btn_color">#807A9DFF</color>
     <color name="gray">#E1E1E1</color>
     <color name="dark_blue">#000315</color>
