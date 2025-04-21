@@ -17,9 +17,7 @@ class QuoteRepository(private val quoteDAO: QuoteDAO) {
         quoteDAO.removeQuote(quote)
     }
 
-    fun getAllQuotes(): Flow<List<Quote>>{
-        return quoteDAO.getAllQuotes()
-    }
+    fun getAllQuotes(): Flow<List<Quote>> = quoteDAO.getAllQuotes()
 
     fun getQuoteById(id: Long): Flow<Quote>{
         return quoteDAO.getQuoteById(id)

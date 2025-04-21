@@ -13,7 +13,7 @@ materialIconsExtended = "1.7.8"
 navigationCompose = "2.8.9"
 room = "2.6.1"
 kotlinxSerializationJson = "1.8.0"
-roomCompiler = "2.5.0"
+roomCompiler = "2.6.1"
 uiTextGoogleFonts = "1.7.8"
 
 [libraries]

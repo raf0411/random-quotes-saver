@@ -34,7 +34,7 @@ import kalbe.corp.randomquotesaver.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    title: String = "Your Quotes",
+    title: String = "",
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 

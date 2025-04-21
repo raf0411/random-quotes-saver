@@ -20,6 +20,14 @@ class QuoteViewModel(
     var quoteAuthorState by mutableStateOf("")
     var quoteCategoryState by mutableStateOf("")
 
+    lateinit var getAllQuotes: Flow<List<Quote>>
+
+    init {
+        viewModelScope.launch {
+            getAllQuotes = quoteRepository.getAllQuotes()
+        }
+    }
+
     fun addQuote(quote: Quote) {
         viewModelScope.launch(Dispatchers.IO) {
             quoteRepository.addQuote(quote)
@@ -52,13 +60,5 @@ class QuoteViewModel(
 
     fun onQuoteCategoryChanged(newCategory: String) {
         quoteCategoryState = newCategory
-    }
-
-    lateinit var getAllQuotes: Flow<List<Quote>>
-
-    init {
-        viewModelScope.launch {
-            getAllQuotes = quoteRepository.getAllQuotes()
-        }
     }
 }

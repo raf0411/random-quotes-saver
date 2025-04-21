@@ -5,6 +5,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraph
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -15,20 +18,21 @@ import kalbe.corp.randomquotesaver.ui.screens.AddEditScreen
 import kalbe.corp.randomquotesaver.ui.screens.HomeScreen
 import kalbe.corp.randomquotesaver.ui.screens.RandomQuoteScreen
 import kalbe.corp.randomquotesaver.ui.screens.SettingsScreen
+import kalbe.corp.randomquotesaver.viewModels.QuoteViewModel
 
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
+    val quoteViewModel: QuoteViewModel = viewModel()
 
     Scaffold(
         topBar = {
             TopBar(
-                title = "Your Quotes"
+                title = "Your Quotes",
             )
         },
         containerColor = colorResource(id = R.color.purple),
-        bottomBar = { BottomBar(navController) }
-    ) { innerPadding ->
+        bottomBar = { BottomBar(navController) }) { innerPadding ->
         NavHost(
             navController = navController,
             modifier = Modifier.padding(innerPadding),
@@ -51,4 +55,12 @@ fun NavGraph() {
             }
         }
     }
+}
+
+@Preview(
+    showBackground = true,
+)
+@Composable
+fun NavGraphPreview(){
+    NavGraph()
 }
