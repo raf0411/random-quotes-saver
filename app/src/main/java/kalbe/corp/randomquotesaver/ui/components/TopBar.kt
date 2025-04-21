@@ -48,7 +48,7 @@ fun TopBar(
             Row {
                 Spacer(Modifier.width(16.dp))
                 IconButton(
-                    onClick = {},
+                    onClick = { onFilterClick?.invoke() },
                     modifier = Modifier
                         .background(
                             colorResource(id = R.color.nav_btn_color), shape = CircleShape
