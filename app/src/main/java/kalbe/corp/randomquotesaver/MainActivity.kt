@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.unit.sp
 import kalbe.corp.randomquotesaver.ui.theme.RandomQuoteSaverTheme
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
@@ -51,9 +52,14 @@ class MainActivity : ComponentActivity() {
                 MaterialTheme(
                     typography = CustomTypography,
                 ){
-                    NavGraph()
+                    MyApp()
                 }
             }
         }
     }
+}
+
+@Composable
+fun MyApp(){
+    NavGraph()
 }

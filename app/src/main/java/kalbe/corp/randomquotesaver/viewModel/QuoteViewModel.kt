@@ -1,4 +1,4 @@
-package kalbe.corp.randomquotesaver.viewModels
+package kalbe.corp.randomquotesaver.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

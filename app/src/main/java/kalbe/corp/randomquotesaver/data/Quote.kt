@@ -14,7 +14,6 @@ data class Quote(
     @ColumnInfo(name = "quote-author") var author: String = "",
     @ColumnInfo(name = "quote-category") var category: String = "Uncategorized",
     @ColumnInfo(name = "quote-timestamp") val timestamp: String = SimpleDateFormat(
-        "yyyy-MM-dd HH:mm:ss",
-        Locale.getDefault()
+        "yyyy-MM-dd HH:mm:ss", Locale.getDefault()
     ).format(Date())
 )

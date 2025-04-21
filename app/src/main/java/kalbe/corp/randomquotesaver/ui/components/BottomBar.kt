@@ -9,11 +9,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Casino
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -29,48 +31,41 @@ import kalbe.corp.randomquotesaver.navigation.Routes
 
 @Composable
 fun BottomBar(
-    navController: NavController,
+    onNavigate: (route: String, title: String) -> Unit,
+    currentRoute: String?
 ) {
-    val selectedNavigationIndex = rememberSaveable {
-        mutableIntStateOf(0)
-    }
     val navigationItems = listOf(
         NavigationItem(
-            title = "Home Screen",
+            title = "Your Quotes",
             icon = Icons.Outlined.Home,
-            route = Routes.HomeScreen,
+            route = Routes.HomeScreen.route,
         ),
         NavigationItem(
-            title = "Random Quotes Screen",
+            title = "Random Quotes",
             icon = Icons.Outlined.Casino,
-            route = Routes.RandomQuoteScreen,
+            route = Routes.RandomQuoteScreen.route,
         ),
         NavigationItem(
-            title = "Settings Screen",
+            title = "Settings",
             icon = Icons.Outlined.Settings,
-            route = Routes.SettingsScreen,
+            route = Routes.SettingsScreen.route,
         ),
     )
 
+    val selectedIndex = navigationItems.indexOfFirst { it.route == currentRoute }.coerceAtLeast(0)
     NavigationBar(
         containerColor = colorResource(id = R.color.blue_500)
     ) {
         navigationItems.forEachIndexed { index, item ->
-            if (item.title == "Random Quotes Screen") {
+            val isSelected = index == selectedIndex
+
+            if (item.title == "Random Quotes") {
                 NavigationBarItem(
-                    modifier = Modifier
-                        .background(colorResource(
-                            id = R.color.blue_400),
-                            shape = CircleShape,
-                        ),
-                    selected = selectedNavigationIndex.intValue == index,
-                    onClick = {
-                        selectedNavigationIndex.intValue = index
-                        navController.navigate(item.route)
-                    },
+                    selected = isSelected,
+                    onClick = { onNavigate(item.route, item.title) },
                     icon = {
                         Icon(
-                            modifier = Modifier.size(48.dp),
+                            modifier = Modifier.size(40.dp),
                             imageVector = item.icon,
                             contentDescription = item.title
                         )
@@ -83,14 +78,11 @@ fun BottomBar(
                 )
             } else {
                 NavigationBarItem(
-                    selected = selectedNavigationIndex.intValue == index,
-                    onClick = {
-                        selectedNavigationIndex.intValue = index
-                        navController.navigate(item.route)
-                    },
+                    selected = isSelected,
+                    onClick = { onNavigate(item.route, item.title) },
                     icon = {
                         Icon(
-                            modifier = Modifier.size(48.dp),
+                            modifier = Modifier.size(40.dp),
                             imageVector = item.icon,
                             contentDescription = item.title
                         )
@@ -104,12 +96,4 @@ fun BottomBar(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun BottomBarPreview() {
-    BottomBar(
-        navController = rememberNavController()
-    )
 }

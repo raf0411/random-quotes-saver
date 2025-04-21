@@ -2,14 +2,11 @@ package kalbe.corp.randomquotesaver.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -23,11 +20,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kalbe.corp.randomquotesaver.R
-import kalbe.corp.randomquotesaver.viewModels.QuoteViewModel
+import kalbe.corp.randomquotesaver.viewModel.QuoteViewModel
 
 @Composable
-fun HomeScreen() {
-//    val quotes = quoteViewModel.getAllQuotes.collectAsState(initial = listOf())
+fun HomeScreen(
+    quoteViewModel: QuoteViewModel,
+) {
+    val quotes = quoteViewModel.getAllQuotes.collectAsState(initial = listOf())
 
     Column(
         modifier = Modifier
@@ -57,6 +56,7 @@ fun HomeScreen() {
 )
 @Composable
 fun HomeScreenPreview(){
-
-    HomeScreen()
+    HomeScreen(
+        quoteViewModel = QuoteViewModel()
+    )
 }
