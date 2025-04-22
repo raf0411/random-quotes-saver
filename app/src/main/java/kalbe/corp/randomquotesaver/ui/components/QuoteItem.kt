@@ -134,29 +134,9 @@ fun QuoteItem(
                             tint = Color.Red,
                         )
                     }
-
-
                 }
             }
         }
 
     }
-}
-
-@Preview(
-    showBackground = true,
-)
-@Composable
-fun QuoteItemPreview() {
-    QuoteItem(
-        quote = Quote(
-            id = 0L,
-            text = "Quotes Bagus",
-            author = "Jojo",
-            category = "Edukasi",
-        ),
-        onQuoteClick = {},
-        onRemoveClick = {},
-        onEditClick = {},
-    )
 }

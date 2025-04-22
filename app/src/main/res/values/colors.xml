@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple">#DCDDFF</color>
+    <color name="purple_100">#C8CAFF</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -16,5 +18,4 @@
     <color name="nav_btn_color">#807A9DFF</color>
     <color name="gray">#E1E1E1</color>
     <color name="dark_blue">#000315</color>
-    <color name="purple">#DCDDFF</color>
 </resources>

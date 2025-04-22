@@ -28,8 +28,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import kalbe.corp.randomquotesaver.R
 import kalbe.corp.randomquotesaver.data.Quote
+import kalbe.corp.randomquotesaver.navigation.Routes
 import kalbe.corp.randomquotesaver.ui.components.QuoteItem
 import kalbe.corp.randomquotesaver.viewModel.QuoteViewModel
 import java.text.SimpleDateFormat
@@ -38,7 +40,10 @@ import java.util.Locale
 
 @Composable
 fun HomeScreen(
+    navController: NavController,
     quoteViewModel: QuoteViewModel,
+    onAddQuoteButtonClick: () -> Unit,
+    onEditQuoteButtonClick: () -> Unit,
 ) {
     val quotes = quoteViewModel.getAllQuotes.collectAsState(initial = listOf())
     fun getDummyQuotes(): List<Quote> {
@@ -87,7 +92,7 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         IconButton(
-            onClick = {},
+            onClick = {onAddQuoteButtonClick()},
             modifier = Modifier
                 .width(128.dp)
                 .height(64.dp)
@@ -120,6 +125,7 @@ fun HomeScreen(
                         },
                         onEditClick = {
                             // TODO Quote Edit Action
+                            onEditQuoteButtonClick()
                         },
                     )
                 }

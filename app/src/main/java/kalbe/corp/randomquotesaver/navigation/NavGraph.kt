@@ -47,7 +47,7 @@ fun NavGraph() {
                 currentRoute = currentRoute,
                 onNavigate = { route, title ->
                     topBarTitle = title
-                    navController.navigate(route){
+                    navController.navigate(route) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                         }
@@ -66,12 +66,26 @@ fun NavGraph() {
         ) {
             composable(Routes.HomeScreen.route) {
                 HomeScreen(
+                    navController = navController,
                     quoteViewModel = quoteViewModel,
+                    onAddQuoteButtonClick = {
+                        topBarTitle = "Add Quote"
+                        navController.navigate(Routes.AddEditScreen.route)
+                    },
+                    onEditQuoteButtonClick = {
+                        topBarTitle = "Edit Quote"
+                        navController.navigate(Routes.AddEditScreen.route)
+                    }
                 )
             }
 
             composable(Routes.AddEditScreen.route) {
-                AddEditScreen()
+                AddEditScreen(
+                    title = topBarTitle,
+                    onConfirmClick = {
+                        topBarTitle = "Your Quotes"
+                        navController.navigate(Routes.HomeScreen.route)
+                    })
             }
 
             composable(Routes.RandomQuoteScreen.route) {
