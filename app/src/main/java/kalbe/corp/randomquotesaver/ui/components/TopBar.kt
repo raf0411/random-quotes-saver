@@ -42,14 +42,12 @@ fun TopBar(
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
-    val backNavigationIcon: (@Composable () -> Unit)? =
-        if (title.contains("Add/Edit Quote")) {
+    val backNavigationIcon: (@Composable () -> Unit)? = if (title.contains("Add/Edit Quote")) {
         {
             Row {
                 Spacer(Modifier.width(16.dp))
                 IconButton(
-                    onClick = { onFilterClick?.invoke() },
-                    modifier = Modifier
+                    onClick = {  }, modifier = Modifier
                         .background(
                             colorResource(id = R.color.nav_btn_color), shape = CircleShape
                         )
@@ -68,38 +66,36 @@ fun TopBar(
         null
     }
 
-    val filterIcon: (@Composable () -> Unit)? =
-        if (title.contains("Your Quotes")) {
-            {
-                Row {
-                    IconButton(
-                        onClick = {},
-                        modifier = Modifier
-                            .background(
-                                colorResource(id = R.color.nav_btn_color), shape = RoundedCornerShape(12.dp)
-                            )
-                            .size(44.dp)
-                    ) {
-                        Icon(
-                            modifier = Modifier
-                                .size(24.dp),
-                            imageVector = Icons.Outlined.FilterAlt,
-                            tint = colorResource(id = R.color.white),
-                            contentDescription = null,
+    val filterIcon: (@Composable () -> Unit)? = if (title.contains("Your Quotes")) {
+        {
+            Row {
+                IconButton(
+                    onClick = { onFilterClick?.invoke() }, modifier = Modifier
+                        .background(
+                            colorResource(id = R.color.nav_btn_color),
+                            shape = RoundedCornerShape(12.dp)
                         )
-                    }
-                    Spacer(Modifier.width(16.dp))
+                        .size(44.dp)
+                ) {
+                    Icon(
+                        modifier = Modifier.size(24.dp),
+                        imageVector = Icons.Outlined.FilterAlt,
+                        tint = colorResource(id = R.color.white),
+                        contentDescription = null,
+                    )
                 }
+                Spacer(Modifier.width(16.dp))
             }
-        } else {
-            null
         }
+    } else {
+        null
+    }
 
     CenterAlignedTopAppBar(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 120.dp)
-            .clip(RoundedCornerShape(bottomStart = 12.dp, bottomEnd = 12.dp))
+            .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         title = {
             Text(

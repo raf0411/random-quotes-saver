@@ -1,5 +1,6 @@
 package kalbe.corp.randomquotesaver.navigation
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -8,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -31,6 +33,7 @@ fun NavGraph() {
     var topBarTitle by remember { mutableStateOf("Your Quotes") }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -38,6 +41,7 @@ fun NavGraph() {
                 title = topBarTitle,
                 onFilterClick = {
                     // TODO Filter Action
+                    Toast.makeText(context, "Filter Clicked!", Toast.LENGTH_SHORT).show()
                 },
             )
         },
