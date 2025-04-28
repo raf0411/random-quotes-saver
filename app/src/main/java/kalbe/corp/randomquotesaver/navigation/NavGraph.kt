@@ -1,5 +1,6 @@
 package kalbe.corp.randomquotesaver.navigation
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -50,6 +51,7 @@ fun NavGraph() {
             BottomBar(
                 currentRoute = currentRoute,
                 onNavigate = { route, title ->
+                    Log.d("RouteCheck", route)
                     topBarTitle = title
                     navController.navigate(route) {
                         popUpTo(navController.graph.findStartDestination().id) {
