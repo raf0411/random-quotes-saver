@@ -95,7 +95,9 @@ fun NavGraph() {
             }
 
             composable(Routes.RandomQuoteScreen.route) {
-                RandomQuoteScreen()
+                RandomQuoteScreen(
+                    onGetAnotherQuoteClick = {},
+                )
             }
 
             composable(Routes.SettingsScreen.route) {
